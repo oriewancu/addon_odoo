@@ -1,0 +1,8 @@
+# cache python
+models/__pycache__/
+
+# macOS Files
+.DS_Store
+
+# any logs file
+*.log
