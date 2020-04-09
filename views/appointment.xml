@@ -22,6 +22,11 @@
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
             <form string="Appointment">
+                <header>
+                    <button string="Konfirmasi" name="action_confirm" type="object" states="draft" class="oe_highlight"/>
+                    <button string="Selesai" name="action_done" type="object" states="confirm" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" />
+                </header>
                 <sheet>
                     <div class="oe_title">
                         <h1>
@@ -40,6 +45,16 @@
                     <group>
                         <field name="notes" />
                     </group>
+                    <notebook>
+                        <page name="appointment_resep_dokter" string="Resep Dokter">
+                            <group>
+                                <field name="doctor_note"/>
+                            </group>
+                        </page>
+                        <page name="appointment_obat" string="Obat">
+                            <field name="pharmacy_note"/>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>

@@ -8,6 +8,14 @@ class HospitalAppointment(models.Model):
     _description = 'Janji Bertemu'
     _order = "appointment_date desc, name asc"
 
+    def action_confirm(self):
+        for rec in self:
+            rec.state = 'confirm'
+
+    def action_done(self):
+        for rec in self:
+            rec.state = 'done'
+
     @api.model
     def create(self, vals):
         if vals.get('name', _('New')) == _('New'):
@@ -19,5 +27,13 @@ class HospitalAppointment(models.Model):
     patient_id = fields.Many2one('hospital.patient', string='Pasien', required=True)
     patient_age = fields.Integer(string='Umur', related="patient_id.patient_age")
     notes = fields.Text(string='Kode Registrasi')
+    doctor_note = fields.Text(string='Catatan')
+    pharmacy_note = fields.Text(string='Catatan')
     appointment_date = fields.Date(string='Tanggal', required=True)
+    state = fields.Selection([
+        ('draft', 'Draf'),
+        ('confirm', 'Konfirmasi'),
+        ('done', 'Selesai'),
+        ('cancel', 'Dibatalkan'),
+    ], string='Status', readOnly=True, default='draft')
 
