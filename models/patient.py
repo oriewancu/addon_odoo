@@ -28,6 +28,23 @@ class HospitalPatient(models.Model):
                     rec.age_group = 'anak'
                 else:
                     rec.age_group = 'dewasa'
+    
+    @api.multi
+    def open_patient_appointments(self):
+        return {
+            'name': _('Appointments'),
+            'domain': [('patient_id', '=', self.id)],
+            'view_type': 'form',
+            'res_model': 'hospital.appointment',
+            'view_id': False,
+            'view_mode': 'tree,form',
+            'type': 'ir.actions.act_window',
+        }
+
+    @api.multi
+    def get_appointment_count(self):
+        count = self.env['hospital.appointment'].search_count([('patient_id', '=', self.id)])
+        self.appointment_count = count
 
     patient_name = fields.Char(string='Nama', required=True, track_visibility='always')
     patient_age = fields.Integer(string='Umur', track_visibility='always')
@@ -42,6 +59,7 @@ class HospitalPatient(models.Model):
         ('dewasa', 'Dewasa'),
         ('anak', 'Anak')
     ], string='Grup Umur', compute='set_age_group', store=True)
+    appointment_count = fields.Integer(string='Janji Bertemu', compute="get_appointment_count")
 
     @api.model
     def create(self, vals):
