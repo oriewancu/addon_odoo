@@ -3,6 +3,16 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+
+    @api.model
+    def create(self, vals_list):
+        res = super(ResPartner, self).create(vals_list)
+        print("simpan master data Contacts dari modul gosantha_hospital")
+        # do custom script here
+        return res
+
 class SaleOrderInherit(models.Model):
     _inherit = 'sale.order'
 

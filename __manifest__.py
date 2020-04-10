@@ -13,6 +13,8 @@
         'data/sequence.xml',
         'views/patient.xml',
         'views/appointment.xml',
+        'reports/report.xml',
+        'reports/patient_card.xml',
     ],
     'demo': [],
     'auto_install': False,

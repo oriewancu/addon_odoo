@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+    <report
+        id="report_patient_card"
+        model="hospital.patient"
+        string="Kartu Pasien"
+        report_type="qweb-pdf"
+        name="gosantha_hospital.report_patient"
+        file="gosantha_hospital.report_patient"
+    />
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+
+    <!-- versi 1 start -->
+    <template id="report_patient_cards">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <h2>Kartu Pasien</h2>
+                <img t-if="doc.image" t-att-src="'data:image/png;base64,%s' % to_text(doc.image)" height="50" border="0" />
+                <br/>
+                Nama: <t t-esc="doc.patient_name"/> <br/>
+                Umur: <t t-esc="doc.patient_age"/> <br/>
+                Jenis Kelamin: <t t-esc="doc.gender"/> <br/>
+                <t t-set="values" t-value="dict([('male','Laki-laki'),('female','Perempuan'), (False,False)])"/>
+                Jenis Kelamin: <t t-esc="values[doc.gender]"/> <br/>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_patient">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="gosantha_hospital.report_patient_cards" />
+            </t>
+        </t>
+    </template>
+    <!-- versi 1 end -->
+
+    <!-- versi 2 start -->
+    <!-- <template id="report_patient">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h2>Kartu Pasien</h2>
+                        Nama: <t t-esc="doc.patient_name"/> <br/>
+                        Umur: <t t-esc="doc.patient_age"/> <br/>
+                        Jenis Kelamin: <t t-esc="doc.gender"/> <br/>
+                        <t t-set="values" t-value="dict([('male','Laki-laki'),('female','Perempuan'), (False,False)])"/>
+                        Jenis Kelamin: <t t-esc="values[doc.gender]"/> <br/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template> -->
+     <!-- versi 2 end -->
+</odoo>

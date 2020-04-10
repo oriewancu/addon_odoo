@@ -1,5 +1,7 @@
-# cache python
+# cache python vscode
 models/__pycache__/
+# cache python pycharm
+.idea/
 
 # macOS Files
 .DS_Store
