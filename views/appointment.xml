@@ -9,7 +9,7 @@
             <tree string="Appointment">
                 <field name="name" />
                 <field name="patient_id" />
-                <field name="patient_age" />
+                <field name="patient_age" sum="Total Umur" />
                 <field name="notes" />
                 <field name="appointment_date" />
             </tree>

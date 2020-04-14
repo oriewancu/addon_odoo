@@ -70,6 +70,7 @@ class HospitalPatient(models.Model):
         ('anak', 'Anak')
     ], string='Grup Umur', compute='set_age_group', store=True)
     appointment_count = fields.Integer(string='Janji Bertemu', compute="get_appointment_count")
+    active = fields.Boolean(string='Active', default=True)
 
     @api.model
     def create(self, vals):

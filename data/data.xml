@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  data-data di bawah ini saat install modul akan terinsert ke tabel, jika dihapus, akan terinsert lagi -->
+
+    <!--  jika ada perubahan data di aplikasi, modul diinstall kembali maka akan tetap sesuai di aplikasi -->
+    <data noupdate="1">
+        <record id="patient_abc" model="hospital.patient">
+            <field name="patient_name">Putri Yusrino</field>
+            <field name="patient_age">29</field>
+            <field name="gender">female</field>
+        </record>
+    </data>
+
+    <!-- jika ada perubahan data di aplikasi, modul ini diinstall kembali maka akan seperti di bawah ini -->
+    <data>
+        <record id="patient_def" model="hospital.patient">
+            <field name="patient_name">Saputra</field>
+            <field name="patient_age">29</field>
+            <field name="gender">male</field>
+        </record>
+    </data>
+
+    <data noupdate="1">
+        <record id="appointment_abc" model="hospital.appointment">
+            <field name="patient_id" ref="patient_abc" />
+            <field name="notes">Check up biasa</field>
+            <field name="appointment_date">2019/04/21</field>
+        </record>
+    </data>
+
+</odoo>
