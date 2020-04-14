@@ -71,6 +71,7 @@ class HospitalPatient(models.Model):
     ], string='Grup Umur', compute='set_age_group', store=True)
     appointment_count = fields.Integer(string='Janji Bertemu', compute="get_appointment_count")
     active = fields.Boolean(string='Active', default=True)
+    doctor_id = fields.Many2one('hospital.doctor', string='Dokter')
 
     @api.model
     def create(self, vals):
