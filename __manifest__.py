@@ -13,6 +13,7 @@
         'security/security.xml',
         'data/sequence.xml',
         'data/data.xml',
+        'wizards/create_appointment.xml',
         'views/patient.xml',
         'views/appointment.xml',
         'views/doctor.xml',

@@ -47,6 +47,21 @@
                     </group>
                     <notebook>
                         <page name="appointment_resep_dokter" string="Resep Dokter">
+                            <field name="appointment_lines">
+                                <tree editable="bottom">
+                                    <field name="product_id" />
+                                    <field name="product_qty" />
+                                    <field name="appointment_id" invisible="1" />
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="product_id" />
+                                    </group>
+                                    <group>
+                                        <field name="product_qty" />
+                                    </group>
+                                </form>
+                            </field>
                             <group>
                                 <field name="doctor_note"/>
                             </group>

@@ -1,5 +1,6 @@
 # cache python vscode
 models/__pycache__/
+wizards/__pycache__/
 # cache python pycharm
 .idea/
 
