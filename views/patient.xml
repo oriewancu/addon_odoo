@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>  
+    <!-- action Appointment di menu action form -->
+    <record id="action_patient_appointments" model="ir.actions.act_window">
+        <field name="name">Janji Bertemu</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('patient_id', '=', active_id)]</field>
+        <field name="view_id" ref="gosantha_hospital.action_appointment_tree" />
+        <field name="binding_model_id" ref="model_hospital_patient" />
+    </record>
 
     <!-- action of detail appointment -->
     <record id="open_patient_appointments" model="ir.actions.act_window">
@@ -66,13 +76,14 @@
                     <field name="image" widget="image" class="oe_avatar" />
                     <div class="oe_title">
                         <h1>
-                            <field name="name_seq" readonly="1" />
+                            <field name="name_seq" readonly="1" invisible="True" />
+                            <field name="patient_name" />
                         </h1>
                     </div>
                     <group>
                         <group>
-                            <field name="patient_name" />
                             <field name="doctor_id" />
+                            <field name="doctor_gender" />
                         </group>
                         <group>
                             <field name="patient_age" />

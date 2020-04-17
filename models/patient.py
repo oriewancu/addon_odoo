@@ -24,6 +24,13 @@ class HospitalPatient(models.Model):
     _description = 'Master Pasien'
     _rec_name = 'patient_name'
 
+    @api.multi
+    def name_get(self):
+        res = []
+        for rec in self:
+            res.append((rec.id, '%s %s' % (rec.name_seq, rec.patient_name)))
+        return res
+
     @api.constrains('patient_age')
     def check_age(self):
         for rec in self:
@@ -56,6 +63,12 @@ class HospitalPatient(models.Model):
         count = self.env['hospital.appointment'].search_count([('patient_id', '=', self.id)])
         self.appointment_count = count
 
+    @api.onchange('doctor_id')
+    def set_doctor_gender(self):
+        for rec in self:
+            if rec.doctor_id:
+                rec.doctor_gender = rec.doctor_id.gender
+
     patient_name = fields.Char(string='Nama', required=True, track_visibility='always')
     patient_age = fields.Integer(string='Umur', track_visibility='always')
     notes = fields.Text(string='Catatan')
@@ -72,6 +85,10 @@ class HospitalPatient(models.Model):
     appointment_count = fields.Integer(string='Janji Bertemu', compute="get_appointment_count")
     active = fields.Boolean(string='Active', default=True)
     doctor_id = fields.Many2one('hospital.doctor', string='Dokter')
+    doctor_gender = fields.Selection([
+        ('male', 'Laki-laki'),
+        ('female', 'Perempuan')
+    ], string='Jen. Kel. Dokter')
 
     @api.model
     def create(self, vals):
