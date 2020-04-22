@@ -142,6 +142,7 @@
     <menuitem id="hospital_root" name="Rumah Sakit"
               web_icon="gosantha_hospital,static/description/icon.png" />
     <menuitem id="hospital_patient" name="Pasien" parent="hospital_root" action="action_patient" />
+    <menuitem id="hospital_appointment" name="Janji Bertemu" parent="hospital_root" action="action_appointment" />
     <menuitem id="hospital_appointment_wizard" name="Buat Janji Bertemu" parent="hospital_root" action="create_appointment_wizard" />
 
 </odoo>

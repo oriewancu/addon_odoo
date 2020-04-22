@@ -94,6 +94,4 @@
         </field>
     </record>
 
-    <menuitem id="hospital_appointment" name="Janji Bertemu" parent="hospital_root" action="action_appointment" />
-
 </odoo>
