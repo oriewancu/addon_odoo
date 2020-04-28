@@ -73,7 +73,7 @@ class HospitalPatient(models.Model):
     patient_age = fields.Integer(string='Umur', track_visibility='always')
     notes = fields.Text(string='Catatan')
     image = fields.Binary(string='Foto', attachment=True)
-    name_seq = fields.Char(string='Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: ('New'))
+    name_seq = fields.Char(string='Reference', required=True, copy=False, readonly=True, index=True, default=lambda self: _('New'))
     gender = fields.Selection([
         ('male', 'Laki-laki'),
         ('female', 'Perempuan')
@@ -89,9 +89,12 @@ class HospitalPatient(models.Model):
         ('male', 'Laki-laki'),
         ('female', 'Perempuan')
     ], string='Jen. Kel. Dokter')
+    email_id = fields.Char(
+        string='Email',
+        required=False)
 
     @api.model
     def create(self, vals):
-        if vals.get('name_seq', ('New')) == ('New'):
-            vals['name_seq'] = self.env['ir.sequence'].next_by_code('hospital.patient.sequence') or ('New')
+        if vals.get('name_seq', _('New')) == _('New'):
+            vals['name_seq'] = self.env['ir.sequence'].next_by_code('hospital.patient.sequence') or _('New')
         return super(HospitalPatient, self).create(vals)

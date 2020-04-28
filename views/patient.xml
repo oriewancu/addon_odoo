@@ -78,6 +78,7 @@
                         <group>
                             <field name="patient_age" />
                             <field name="age_group" />
+                            <field name="email_id" />
                         </group>
                     </group>
                     <group>
