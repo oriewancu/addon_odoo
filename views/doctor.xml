@@ -49,7 +49,7 @@
             </field>
         </record>
 
-        <menuitem name="Dokter" id="hospital_doctor" parent="hospital_root" action="action_doctor"/>
+        <menuitem id="hospital_doctor" name="Dokter" parent="hospital_root" action="action_doctor"/>
 
     </data>
 </odoo>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>  
+<odoo>
 
     <!-- tree view of appointment -->
     <record id="action_appointment_tree" model="ir.ui.view">
@@ -93,5 +93,18 @@
             </p>
         </field>
     </record>
+
+    <!-- action Appointment di menu action form patient -->
+    <record id="action_patient_appointments" model="ir.actions.act_window">
+        <field name="name">Janji Bertemu</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('patient_id', '=', active_id)]</field>
+        <field name="view_id" ref="gosantha_hospital.action_appointment_tree" />
+        <field name="binding_model_id" ref="model_hospital_patient" />
+    </record>
+
+    <menuitem id="hospital_appointment" name="Janji Bertemu" parent="hospital_root" action="action_appointment" />
 
 </odoo>

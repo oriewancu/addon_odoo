@@ -1,5 +1,5 @@
 {
-    'name': 'Manajemen Rumah Sakit',
+    'name': 'Rumah Sakit',
     'version': '12.0.1.0.0',
     'description': 'Modul untuk Manajemen Rumah Sakit',
     'summary': 'Modul untuk Manajemen Rumah Sakit',
@@ -14,8 +14,8 @@
         'data/sequence.xml',
         'data/data.xml',
         'wizards/create_appointment.xml',
-        'views/appointment.xml',
         'views/patient.xml',
+        'views/appointment.xml',
         'views/doctor.xml',
         'reports/report.xml',
         'reports/patient_card.xml',
