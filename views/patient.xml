@@ -49,6 +49,7 @@
                     <button type="action" name="%(gosantha_hospital.create_appointment_wizard)d"
                             string="Buat Janji Bertemu" class="oe_hightlight btn btn-primary o_form_button_edit"
                             context="{'default_patient_id': active_id}" />
+                    <button type="object" name="action_send_card" string="Kirim via Email" class="oe_hightlight" />
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">

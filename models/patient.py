@@ -69,6 +69,12 @@ class HospitalPatient(models.Model):
             if rec.doctor_id:
                 rec.doctor_gender = rec.doctor_id.gender
 
+    def action_send_card(self):
+        print("sending email")
+        template_id = self.env.ref('gosantha_hospital.patient_card_email_template').id
+        template = self.env['mail.template'].browse(template_id)
+        template.send_mail(self.id, force_send=True)
+
     patient_name = fields.Char(string='Nama', required=True, track_visibility='always')
     patient_age = fields.Integer(string='Umur', track_visibility='always')
     notes = fields.Text(string='Catatan')
