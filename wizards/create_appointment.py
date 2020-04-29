@@ -13,5 +13,6 @@ class CreateAppointment (models.TransientModel):
             'patient_id': self.patient_id.id,
             'appointment_date': self.appointment_date
         }
+        self.patient_id.message_post(body="Berhasil membuat Janji Bertemu", subject="Janji Bertemu")
         self.env['hospital.appointment'].create(vals)
 
