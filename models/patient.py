@@ -94,10 +94,9 @@ class HospitalPatient(models.Model):
     doctor_gender = fields.Selection([
         ('male', 'Laki-laki'),
         ('female', 'Perempuan')
-    ], string='Jen. Kel. Dokter')
-    email_id = fields.Char(
-        string='Email',
-        required=False)
+    ], string='Jen. Kel. Dokter', readonly=True)
+    email_id = fields.Char(string='Email', required=False)
+    phone_number = fields.Char(string="No. Telp.", required=False)
 
     @api.model
     def create(self, vals):

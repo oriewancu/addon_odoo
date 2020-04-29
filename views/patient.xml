@@ -49,7 +49,8 @@
                     <button type="action" name="%(gosantha_hospital.create_appointment_wizard)d"
                             string="Buat Janji Bertemu" class="oe_hightlight btn btn-primary o_form_button_edit"
                             context="{'default_patient_id': active_id}" />
-                    <button type="object" name="action_send_card" string="Kirim via Email" class="oe_hightlight" />
+                    <button type="object" name="action_send_card" string="Kirim via Email"
+                            class="oe_hightlight" groups="gosantha_hospital.group_hospital_doctor" />
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
@@ -75,16 +76,15 @@
                         <group>
                             <field name="doctor_id" />
                             <field name="doctor_gender" />
+                            <field name="notes" />
                         </group>
                         <group>
                             <field name="patient_age" />
                             <field name="age_group" />
+                            <field name="gender" />
                             <field name="email_id" />
+                            <field name="phone_number" groups="gosantha_hospital.group_hospital_doctor" />
                         </group>
-                    </group>
-                    <group>
-                        <field name="gender" />
-                        <field name="notes" />
                     </group>
                 </sheet>
                 <div class="oe_chatter">
