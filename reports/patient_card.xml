@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+
+    <!-- versi 1 start -->
+<!--    <template id="report_patient_cards">-->
+<!--        <t t-call="web.html_container">-->
+<!--            <t t-foreach="docs" t-as="doc">-->
+<!--                <h2>Kartu Pasien</h2>-->
+<!--                <p style="text-align:center; padding-top:10px">-->
+<!--                    <img t-if="not doc.image" t-att-src="'/web/static/src/img/placeholder.png'" height="50" border="1" />-->
+<!--                    <img t-if="doc.image" t-att-src="'data:image/png;base64,%s' % to_text(doc.image)" height="50" border="1" />-->
+<!--                </p>-->
+
+<!--                <br/>-->
+<!--                Nama: <t t-esc="doc.patient_name"/> <br/>-->
+<!--                Umur: <t t-esc="doc.patient_age"/> <br/>-->
+<!--                Jenis Kelamin: <t t-esc="doc.gender"/> <br/>-->
+<!--                <t t-set="values" t-value="dict([('male','Laki-laki'),('female','Perempuan'), (False,False)])"/>-->
+<!--                Jenis Kelamin: <t t-esc="values[doc.gender]"/> <br/>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </template>-->
+
+<!--    <template id="report_patient">-->
+<!--        <t t-call="web.html_container">-->
+<!--            <t t-foreach="docs" t-as="doc">-->
+<!--                <t t-call="gosantha_hospital.report_patient_cards" />-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </template>-->
+    <!-- versi 1 end -->
+
+    <!-- versi 2 start -->
+    <template id="report_patient">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div class="oe_structure">
+                            <div class="row">
+                                <center>
+                                    <div class="col-xs-12" style="margin:auto">
+                                        <table class="table table-condensed" style="border: 3px solid black !important;">
+                                            <tr>
+                                                <td width="40%" style="vertical-align:center;text-align:center;">
+                                                    <p>
+                                                        <img t-if="not doc.image" t-att-src="'/web/static/src/img/placeholder.png'" height="50" border="1" />
+                                                        <img t-if="doc.image" t-att-src="'data:image/png;base64,%s' % to_text(doc.image)" height="50" border="1" />
+                                                    </p>
+                                                    <p>
+                                                       <h2><strong><span t-field="doc.patient_name" /></strong></h2>
+                                                        <img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', doc.name_seq, 600, 150)" style="width:100%;height::4rem;"/>
+                                                        <span t-field="doc.name_seq"/>
+                                                    </p>
+                                                </td>
+                                                <td width="60%" style="vertical-align:center;">
+                                                    <br/>
+                                                    <table width="100%" style="border-top: 3px solid white !important;">
+                                                        <tr>
+                                                            <td width="40%" style="text-align:right;">
+                                                                <p><strong>Umur</strong></p>
+                                                                <p><strong>Grup Umur</strong></p>
+                                                                <p><strong>Jenis Kelamin</strong></p>
+                                                            </td>
+                                                            <td style="text-align:left; padding-left:10px;">
+                                                                <p t-field="doc.patient_age" />
+                                                                <p t-field="doc.age_group" />
+                                                                <p t-field="doc.gender" />
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+     <!-- versi 2 end -->
+</odoo>
